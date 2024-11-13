@@ -1,12 +1,17 @@
-import { Button } from "@/components/ui/button"
+import BlogContainer from "./ui_components/BlogContainer"
+import Footer from "./ui_components/Footer"
+import Header from "./ui_components/Header"
+import NavBar from "./ui_components/NavBar"
 
 
 
 const App = () => {
   return (
     <div>
-      Hello World
-      <Button className="bg-blue-800">Click me</Button>
+      <NavBar />
+      <Header />
+      <BlogContainer />
+      <Footer />
     </div>
   )
 }
