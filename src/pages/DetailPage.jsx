@@ -20,11 +20,11 @@ const DetailPage = () => {
     queryFn: () => getBlog(slug),
   });
 
+  console.log(blog);
+
   if (isPending) {
     return <Spinner />;
   }
-
-  console.log(blog);
 
   return (
     <div className="padding-dx max-container py-9">
@@ -39,7 +39,10 @@ const DetailPage = () => {
       <BlogWriter blog={blog} />
 
       <div className="w-full h-[350px] my-9 overflow-hidden rounded-sm">
-        <img className="w-full h-full object-cover rounded-sm" src={`${BASE_URL}${blog.featured_image}`} />
+        <img
+          className="w-full h-full object-cover rounded-sm"
+          src={`${BASE_URL}${blog.featured_image}`}
+        />
       </div>
       <p className="text-[16px] leading-[2rem] text-justify text-[#3B3C4A] dark:text-[#BABABF]">
         {blog.content}

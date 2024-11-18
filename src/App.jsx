@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import BlogContainer from "./ui_components/BlogContainer";
+import BlogContainer  from "./ui_components/BlogContainer";
 import Footer from "./ui_components/Footer";
 import Header from "./ui_components/Header";
 import NavBar from "./ui_components/NavBar";

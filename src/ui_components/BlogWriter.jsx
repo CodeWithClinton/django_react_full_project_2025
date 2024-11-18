@@ -1,6 +1,6 @@
-import { FormatDate } from "@/services/formatDate"
-import pic from "../images/pic.jpg"
 import { BASE_URL } from "@/api"
+import pic from "../images/pic.jpg"
+import { FormatDate } from "@/services/formatDate"
 
 const BlogWriter = ({blog}) => {
   return (
