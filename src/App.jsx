@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SignupPage from "./pages/SignupPage";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,8 @@ const App = () => {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<HomePage />} />
             <Route path="blogs/:slug" element={<DetailPage />} />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route path="signup" element={<SignupPage />} />
+            {/* <Route path="profile" element={<ProfilePage />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
