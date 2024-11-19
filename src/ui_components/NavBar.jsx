@@ -4,7 +4,7 @@ import ResponsiveNavBar from "./ResponsiveNavBar";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const NavBar = ({darkMode, handleDarkMode}) => {
+const NavBar = ({ darkMode, handleDarkMode }) => {
   const [showNavBar, setShowNavBar] = useState(false);
 
   return (
@@ -14,17 +14,18 @@ const NavBar = ({darkMode, handleDarkMode}) => {
           DevFolio
         </Link>
         <ul className="flex items-center  justify-end gap-9 text-[#3B3C4A] lg:flex-1 max-md:hidden dark:text-[#FFFFFF]">
-          {/* <li>
+          <li>Logout</li>
+          
+          <li>
             <NavLink
-              to="/profile"
+              to="/signin"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Hi, Clinton
+              Login
             </NavLink>
-          </li> */}
+          </li>
 
-          <li>Logout</li>
-          <li>Login</li>
+
           <li>
             <NavLink
               to="/signup"
@@ -33,7 +34,17 @@ const NavBar = ({darkMode, handleDarkMode}) => {
               Register
             </NavLink>
           </li>
-          <li className="font-semibold">Create post</li>
+
+          <li className="font-semibold">
+            <NavLink
+              to="/create"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Create Post
+            </NavLink>
+          </li>
+
+
         </ul>
 
         <Switch onCheckedChange={handleDarkMode} checked={darkMode} />
