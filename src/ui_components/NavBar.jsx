@@ -4,8 +4,22 @@ import ResponsiveNavBar from "./ResponsiveNavBar";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const NavBar = ({ darkMode, handleDarkMode }) => {
+const NavBar = ({
+  darkMode,
+  handleDarkMode,
+  isAuthenticated,
+  username,
+  setIsAuthenticated,
+  setUsername,
+}) => {
   const [showNavBar, setShowNavBar] = useState(false);
+
+  function logout() {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    setIsAuthenticated(false);
+    setUsername(null);
+  }
 
   return (
     <>
@@ -14,26 +28,34 @@ const NavBar = ({ darkMode, handleDarkMode }) => {
           DevFolio
         </Link>
         <ul className="flex items-center  justify-end gap-9 text-[#3B3C4A] lg:flex-1 max-md:hidden dark:text-[#FFFFFF]">
-          <li>Logout</li>
-          
-          <li>
-            <NavLink
-              to="/signin"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Login
-            </NavLink>
-          </li>
+          {isAuthenticated ? (
+            <>
+              <li>Hi, {username}</li>
+              <li onClick={logout} className="cursor-pointer">
+                Logout
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink
+                  to="/signin"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Login
+                </NavLink>
+              </li>
 
-
-          <li>
-            <NavLink
-              to="/signup"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Register
-            </NavLink>
-          </li>
+              <li>
+                <NavLink
+                  to="/signup"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Register
+                </NavLink>
+              </li>
+            </>
+          )}
 
           <li className="font-semibold">
             <NavLink
@@ -43,8 +65,6 @@ const NavBar = ({ darkMode, handleDarkMode }) => {
               Create Post
             </NavLink>
           </li>
-
-
         </ul>
 
         <Switch onCheckedChange={handleDarkMode} checked={darkMode} />
@@ -54,7 +74,13 @@ const NavBar = ({ darkMode, handleDarkMode }) => {
         />
       </nav>
 
-      {showNavBar && <ResponsiveNavBar />}
+      {showNavBar && (
+        <ResponsiveNavBar
+          isAuthenticated={isAuthenticated}
+          username={username}
+          logout={logout}
+        />
+      )}
     </>
   );
 };
