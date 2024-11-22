@@ -1,7 +1,9 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { registerUser } from "@/services/apiBlog";
+import InputError from "@/ui_components/InputError";
 import SmallSpinner from "@/ui_components/SmallSpinner";
+import SmallSpinnerText from "@/ui_components/SmallSpinnerText";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -57,7 +59,7 @@ const SignupPage = () => {
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[300px]"
         />
         {errors?.username?.message && (
-          <small className="text-red-700">{errors.username.message}</small>
+          <InputError error={errors.username.message} />
         )}
       </div>
 
@@ -77,7 +79,7 @@ const SignupPage = () => {
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[300px]"
         />
         {errors?.first_name?.message && (
-          <small className="text-red-700">{errors.first_name.message}</small>
+          <InputError error={errors.first_name.message} />
         )}
       </div>
 
@@ -97,7 +99,7 @@ const SignupPage = () => {
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[300px]"
         />
         {errors?.last_name?.message && (
-          <small className="text-red-700">{errors.last_name.message}</small>
+          <InputError error={errors.last_name.message} />
         )}
       </div>
 
@@ -117,7 +119,7 @@ const SignupPage = () => {
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[300px]"
         />
         {errors?.password?.message && (
-          <small className="text-red-700">{errors.password.message}</small>
+          <InputError error={errors.password.message} />
         )}
       </div>
 
@@ -138,9 +140,7 @@ const SignupPage = () => {
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[300px]"
         />
         {errors?.confirmPassword?.message && (
-          <small className="text-red-700">
-            {errors.confirmPassword.message}
-          </small>
+          <InputError error={errors.confirmPassword.message} />
         )}
       </div>
 
@@ -148,12 +148,11 @@ const SignupPage = () => {
         <button className="bg-[#4B6BFB] text-white w-full py-3 px-2 rounded-md flex items-center justify-center gap-2">
           {mutation.isPending ? (
             <>
-              {" "}
-              <SmallSpinner />{" "}
-              <small className="text-[16px]">Creating user...</small>{" "}
+              <SmallSpinner />
+              <SmallSpinnerText text="Creating user..." />
             </>
           ) : (
-            <small className="text-[16px]">Signup</small>
+            <SmallSpinnerText text="Signup" />
           )}
         </button>
         <p className="text-[14px]">
