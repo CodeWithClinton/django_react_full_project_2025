@@ -44,13 +44,13 @@ const App = () => {
           }
         >
           <Route index element={<HomePage />} />
-          <Route path="blogs/:slug" element={<DetailPage />} />
+          <Route path="blogs/:slug" element={<DetailPage username={username} isAuthenticated={isAuthenticated} />} />
           <Route path="signup" element={<SignupPage />} />
           <Route
             path="create"
             element={
               <ProtectedRoute>
-                <CreatePostPage />
+                <CreatePostPage isAuthenticated={isAuthenticated} />
               </ProtectedRoute>
             }
           />
