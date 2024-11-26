@@ -62,35 +62,38 @@ export async function createBlog(data) {
   }
 }
 
-
-export async function updateBlog(data, id){
-  try{
-    const response = await api.put(`update_blog/${id}/`, data)
-    return response.data
-  }
-
-  catch(err){
-    if(err.response){
-      throw new Error(err.response?.data?.message || "Failed to update blog" )
+export async function updateBlog(data, id) {
+  try {
+    const response = await api.put(`update_blog/${id}/`, data);
+    return response.data;
+  } catch (err) {
+    if (err.response) {
+      throw new Error(err.response?.data?.message || "Failed to update blog");
     }
 
-    throw new Error(err.message)
+    throw new Error(err.message);
   }
 }
 
-
-export async function deleteBlog(id){
-  try{
-    const response = await api.post(`delete_blog/${id}/`)
-    return response.data
-  }
-
-  catch(err){
-    if(err.response){
-      throw new Error(err.response?.data?.message || "Failed to delete blog" )
+export async function deleteBlog(id) {
+  try {
+    const response = await api.post(`delete_blog/${id}/`);
+    return response.data;
+  } catch (err) {
+    if (err.response) {
+      throw new Error(err.response?.data?.message || "Failed to delete blog");
     }
 
-    throw new Error(err.message)
+    throw new Error(err.message);
   }
 }
 
+export async function getUserInfo(username){
+  try{
+    const response = await api.get(`get_userinfo/${username}`)
+    return response.data
+  }
+  catch(err){
+    throw new Error(err.message)
+  }
+}

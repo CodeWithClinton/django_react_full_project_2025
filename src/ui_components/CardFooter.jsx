@@ -1,8 +1,10 @@
 import { BASE_URL } from "@/api";
 import { FormatDate } from "@/services/formatDate";
+import { Link } from "react-router-dom";
 
 const CardFooter = ({ blog }) => {
   return (
+    <Link to={`/profile/${blog.author.username}`}>
     <div className="flex items-center gap=4 ">
       <span className="flex items-center gap-2">
         <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
@@ -21,6 +23,7 @@ const CardFooter = ({ blog }) => {
         {FormatDate(blog.published_date)}
       </small>
     </div>
+    </Link>
   );
 };
 
