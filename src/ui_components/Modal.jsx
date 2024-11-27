@@ -1,4 +1,4 @@
-const Modal = ({ children, toggleModal }) => {
+const Modal = ({ children, toggleModal}) => {
 
     function handleToggleModal(e){
         if(e.target.id === "modal"){

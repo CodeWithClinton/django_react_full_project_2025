@@ -45,7 +45,7 @@ const App = () => {
           }
         >
           <Route index element={<HomePage />} />
-          <Route path="profile/:username" element={<ProfilePage />} />
+          <Route path="profile/:username" element={<ProfilePage authUsername={username} />} />
           <Route path="blogs/:slug" element={<DetailPage username={username} isAuthenticated={isAuthenticated} />} />
           <Route path="signup" element={<SignupPage />} />
           <Route

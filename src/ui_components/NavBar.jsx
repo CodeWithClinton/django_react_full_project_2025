@@ -30,7 +30,12 @@ const NavBar = ({
         <ul className="flex items-center  justify-end gap-9 text-[#3B3C4A] lg:flex-1 max-md:hidden dark:text-[#FFFFFF]">
           {isAuthenticated ? (
             <>
-              <li>Hi, {username}</li>
+              <li><NavLink
+                  to={`/profile/${username}`}
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Hi, {username}
+                </NavLink></li>
               <li onClick={logout} className="cursor-pointer">
                 Logout
               </li>
