@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 import { useEffect, useState } from "react";
 import { getUsername } from "./services/apiBlog";
 import { useQuery } from "@tanstack/react-query";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   const [username, setUsername] = useState(null);
@@ -45,6 +46,7 @@ const App = () => {
           }
         >
           <Route index element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="profile/:username" element={<ProfilePage authUsername={username} />} />
           <Route path="blogs/:slug" element={<DetailPage username={username} isAuthenticated={isAuthenticated} />} />
           <Route path="signup" element={<SignupPage />} />
